@@ -15,9 +15,9 @@ const { _ } = args;
 if (_.includes("prepare")) {
   const source = args.s;
   generateTempYaml(source);
+  process.on("exit", clean);
 } else {
   const encoding = args.encoding || defaultConfig.options.encoding;
   const config: Config = { options: { encoding } };
   generateDotEnv(config);
-  process.on("exit", clean);
 }

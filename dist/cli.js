@@ -11,11 +11,11 @@ var _ = args._;
 if (_.includes("prepare")) {
     var source = args.s;
     (0, index_1.generateTempYaml)(source);
+    process.on("exit", index_1.clean);
 }
 else {
     var encoding = args.encoding || index_1.defaultConfig.options.encoding;
     var config = { options: { encoding: encoding } };
     (0, index_1.generateDotEnv)(config);
-    process.on("exit", index_1.clean);
 }
 //# sourceMappingURL=cli.js.map
