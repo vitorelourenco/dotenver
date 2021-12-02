@@ -1,0 +1,27 @@
+{
+  "name": "dotenver",
+  "version": "1.0.0",
+  "description": "Create .env files dynamically",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "npx jest",
+    "compile": "tsc -p ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "@types/js-yaml": "^4.0.5",
+    "@types/minimist": "^1.2.2",
+    "jest": "^27.4.3",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "minimist": "^1.2.5"
+  },
+  "bin": {
+    "dotenver": "./dist/cli.js"
+  }
+}
