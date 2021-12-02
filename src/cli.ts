@@ -12,10 +12,11 @@ import Config from "./interfaces/Config";
 const args = minismist(process.argv.slice(2));
 const { _ } = args;
 
-if (_.includes("prepare")) {
+if (_.includes("clean")) {
+  clean();
+} else if (_.includes("prepare")) {
   const source = args.s;
   generateTempYaml(source);
-  process.on("exit", clean);
 } else {
   const encoding = args.encoding || defaultConfig.options.encoding;
   const config: Config = { options: { encoding } };

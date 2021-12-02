@@ -8,10 +8,12 @@ var index_1 = require("./index");
 var minimist_1 = __importDefault(require("minimist"));
 var args = (0, minimist_1["default"])(process.argv.slice(2));
 var _ = args._;
-if (_.includes("prepare")) {
+if (_.includes("clean")) {
+    (0, index_1.clean)();
+}
+else if (_.includes("prepare")) {
     var source = args.s;
     (0, index_1.generateTempYaml)(source);
-    process.on("exit", index_1.clean);
 }
 else {
     var encoding = args.encoding || index_1.defaultConfig.options.encoding;
