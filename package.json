@@ -5,11 +5,11 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "npx jest",
-    "compile": "tsc -p ."
+    "build": "rm -rf dist && tsc -p ."
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Vitor Emanuel Lourenço",
+  "license": "MIT",
   "devDependencies": {
     "@types/jest": "^27.0.3",
     "@types/js-yaml": "^4.0.5",
