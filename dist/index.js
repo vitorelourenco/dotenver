@@ -22,18 +22,16 @@ exports.defaultConfig = {
 };
 function parseWith(userConfig) {
     var options = Object.assign(__assign({}, exports.defaultConfig), userConfig).options;
-    var data = (function () {
-        try {
-            var data_1 = (0, js_yaml_1.load)((0, fs_1.readFileSync)(exports.tempFile, options));
-            return data_1;
-        }
-        catch (err) {
-            throw new Error(err.message);
-        }
-    })();
+    var data = {};
+    try {
+        data = (0, js_yaml_1.load)((0, fs_1.readFileSync)(exports.tempFile, options));
+    }
+    catch (err) {
+        throw new Error(err);
+    }
     var keys = Object.keys(data);
     keys.forEach(function (key) { return (data[key] = JSON.stringify(data[key])); });
-    return data || {};
+    return data;
 }
 exports.parseWith = parseWith;
 function stripWrapper(str) {
