@@ -1,5 +1,5 @@
 export default interface Config{
-  options?: {
+  options: {
     encoding: BufferEncoding
   };
 }

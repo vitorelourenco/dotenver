@@ -1,5 +1,3 @@
-"use strict";
-
 import { load as yamlLoad } from "js-yaml";
 import { readFileSync, writeFileSync, copyFileSync, rmSync } from "fs";
 import Config from "./interfaces/Config";
@@ -14,18 +12,17 @@ export const defaultConfig: Config = {
 
 export function parseWith(userConfig?: Config) {
   const { options } = Object.assign({ ...defaultConfig }, userConfig);
-  const data: { [key: string]: any } = (() => {
-    try {
-      const data = yamlLoad(readFileSync(tempFile, options));
-      return data;
-    } catch (err) {
-      throw new Error(err.message);
-    }
-  })();
+
+  let data: { [key: string]: any } = {};
+  try {
+    data = yamlLoad(readFileSync(tempFile, options)) as { [key: string]: any };
+  } catch (err: any) {
+    throw new Error(err);
+  }
 
   const keys = Object.keys(data);
   keys.forEach((key) => (data[key] = JSON.stringify(data[key])));
-  return data || {};
+  return data;
 }
 
 export function stripWrapper(str: string) {
