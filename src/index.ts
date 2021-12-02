@@ -19,9 +19,6 @@ export function parseWith(userConfig?: Config) {
   } catch (err: any) {
     throw new Error(err);
   }
-
-  const keys = Object.keys(data);
-  keys.forEach((key) => (data[key] = JSON.stringify(data[key])));
   return data;
 }
 

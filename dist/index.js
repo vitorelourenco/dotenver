@@ -29,8 +29,6 @@ function parseWith(userConfig) {
     catch (err) {
         throw new Error(err);
     }
-    var keys = Object.keys(data);
-    keys.forEach(function (key) { return (data[key] = JSON.stringify(data[key])); });
     return data;
 }
 exports.parseWith = parseWith;
