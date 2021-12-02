@@ -15,5 +15,6 @@ else {
     var encoding = args.encoding || index_1.defaultConfig.options.encoding;
     var config = { options: { encoding: encoding } };
     (0, index_1.generateDotEnv)(config);
+    process.on("exit", index_1.clean);
 }
 //# sourceMappingURL=cli.js.map

@@ -1,7 +1,10 @@
+"use strict";
+
 import {
   defaultConfig,
   generateDotEnv,
-  generateTempYaml
+  generateTempYaml,
+  clean
 } from "./index";
 import minismist from "minimist";
 import Config from "./interfaces/Config";
@@ -16,4 +19,5 @@ if (_.includes("prepare")) {
   const encoding = args.encoding || defaultConfig.options.encoding;
   const config: Config = { options: { encoding } };
   generateDotEnv(config);
+  process.on("exit", clean);
 }
