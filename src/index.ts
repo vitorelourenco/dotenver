@@ -2,7 +2,7 @@ import { load as yamlLoad } from "js-yaml";
 import { readFileSync, writeFileSync, copyFileSync, rmSync } from "fs";
 import Config from "./interfaces/Config";
 
-export const tempFile = "./dotenver.yaml";
+const tempFile = "./dotenver.yaml";
 
 export const defaultConfig: Config = {
   options: {
@@ -25,22 +25,11 @@ export function parseWith(userConfig?: Config) {
   return data;
 }
 
-export function stripWrapper(str: string) {
-  let newStr = str.replace(/^"?(.+?)"?$/, "$1");
-  if (newStr === str) {
-    newStr = str.replace(/^'?(.+?)'?$/, "$1");
-  }
-  if (newStr === str) {
-    newStr = str.replace(/^`?(.+?)`?$/, "$1");
-  }
-  return newStr;
-}
-
 export function generateDotEnv(userConfig?: Config) {
   const data = parseWith(userConfig);
   const keys = Object.keys(data);
   const str = keys.reduce((acc, entry) => {
-    const line = entry + "=" + stripWrapper(data[entry]) + "\n";
+    const line = entry + "=" + data[entry] + "\n";
     return (acc += line);
   }, "");
   writeFileSync(".env", str);
