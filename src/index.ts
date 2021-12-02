@@ -1,3 +1,5 @@
+"use strict";
+
 import { load as yamlLoad } from "js-yaml";
 import { readFileSync, writeFileSync, copyFileSync, rmSync } from "fs";
 import Config from "./interfaces/Config";

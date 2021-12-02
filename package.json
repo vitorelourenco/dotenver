@@ -1,6 +1,6 @@
 {
   "name": "dotenver",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Create .env files dynamically",
   "main": "dist/index.js",
   "scripts": {
